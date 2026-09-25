@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <h1>Tasks</h1>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item is-active" data-view="today">
+          <span>Today</span><span class="count" id="countToday"></span>
+        </button>
+        <button class="nav-item" data-view="upcoming">
+          <span>Upcoming</span><span class="count" id="countUpcoming"></span>
+        </button>
+        <button class="nav-item" data-view="completed">
+          <span>Completed</span><span class="count" id="countCompleted"></span>
+        </button>
+      </nav>
+
+      <p class="section-title">Lists</p>
+      <ul class="nav" id="listNav"></ul>
+
+      <form class="new-list" id="listForm">
+        <input type="text" id="listInput" placeholder="+ New list" maxlength="30" />
+      </form>
+
+      <div class="week-card">
+        <p class="week-label">This week</p>
+        <p class="week-value"><span id="weekPercent">0</span>%</p>
+        <div class="week-bar"><div class="week-fill" id="weekFill"></div></div>
+        <p class="week-note" id="weekNote"></p>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" type="button">Light mode</button>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="main-header">
+        <div>
+          <p class="greeting" id="greeting"></p>
+          <h2 id="viewTitle">Today</h2>
+        </div>
+        <span class="muted" id="viewDate"></span>
+      </header>
+
+      <section class="stats">
+        <article class="stat" style="--c: var(--violet)">
+          <p class="stat-label">Open</p>
+          <p class="stat-value" id="statOpen">0</p>
+        </article>
+        <article class="stat" style="--c: var(--cyan)">
+          <p class="stat-label">Due today</p>
+          <p class="stat-value" id="statToday">0</p>
+        </article>
+        <article class="stat" style="--c: var(--pink)">
+          <p class="stat-label">Overdue</p>
+          <p class="stat-value" id="statOverdue">0</p>
+        </article>
+        <article class="stat" style="--c: var(--amber)">
+          <p class="stat-label">Completed</p>
+          <p class="stat-value" id="statDone">0</p>
+        </article>
+      </section>
+
+      <form class="composer" id="taskForm">
+        <input type="text" id="taskInput" placeholder="Add a new task…" maxlength="140" required />
+        <div class="composer-row">
+          <select id="priorityInput" aria-label="Priority">
+            <option value="high">High priority</option>
+            <option value="medium" selected>Medium priority</option>
+            <option value="low">Low priority</option>
+          </select>
+          <input type="date" id="dateInput" aria-label="Due date" />
+          <button type="submit" class="btn">Add task</button>
+        </div>
+      </form>
+
+      <div class="toolbar">
+        <input type="search" id="searchInput" placeholder="Search tasks" />
+        <div class="chips" role="group" aria-label="Filter by priority">
+          <button class="chip is-active" data-priority="all">All</button>
+          <button class="chip" data-priority="high">High</button>
+          <button class="chip" data-priority="medium">Medium</button>
+          <button class="chip" data-priority="low">Low</button>
+        </div>
+      </div>
+
+      <ul class="task-list" id="taskList"></ul>
+      <p class="empty" id="emptyState" hidden></p>
+    </main>
+
+    <!-- Detail panel -->
+    <aside class="detail" id="detail"></aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
